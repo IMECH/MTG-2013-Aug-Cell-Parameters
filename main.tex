@@ -1,0 +1,94 @@
+\documentclass{beamer} % blue; brown; gray; red;
+\usepackage{beamerthemesplit}
+\usepackage{beamerthemeshadow}
+\usepackage{animate}
+\usepackage[3D]{movie15}
+\usepackage{hyperref}
+%\usepackage[numbered]{mcode}
+\usepackage{graphics}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps}
+\usepackage{amsmath,amssymb}
+\usepackage{pgfpages}
+%\setbeameroption{show only notes}
+%\setbeameroption{show notes on second screen=right}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+
+
+\usetheme{Warsaw}
+
+\usecolortheme{sidebartab}
+%beetle,crane,dove,fly,seagull,wolverine,beaver
+\renewcommand{\raggedright}{\leftskip=0pt \rightskip=0pt plus 0cm}
+\raggedright
+\graphicspath{{figures/}}
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\setCJKmainfont[BoldFont=simhei.ttf]{simkai.ttf}
+%\setCJKsansfont{simhei.ttf}
+%\setCJKmonofont{simfang.ttf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\usefoottemplate{ %重新定义页脚，加入作者，单位，单位图标，和文档标题
+  \vbox{\tiny%
+    \hbox{%
+      \setbox\beamer@linebox=\hbox to\paperwidth{%
+        \hbox to.5\paperwidth{
+            \hfill\tiny\color{white}
+                  \textbf{\insertshortauthor\quad\insertshortinstitute}
+            \hskip .1cm\lower 0.2em\hbox{\includegraphics[height=0.25cm]{./figures/CAS.pdf}}
+            \hskip.3cm}%
+        \hbox to.5\paperwidth{
+            \hskip.3cm\tiny\color{white}
+                  \textbf{\insertshorttitle}\hfill}\hfill}%
+      \ht\beamer@linebox=2.625ex%
+      \dp\beamer@linebox=0pt%
+      \setbox\beamer@linebox=\vbox{\box\beamer@linebox\vskip1.125ex}%
+      \color{structure}\hskip-\Gm@lmargin\vrule width.5\paperwidth
+      height\ht\beamer@linebox\color{structure!70}\vrule width.5\paperwidth
+      height\ht\beamer@linebox\hskip-\paperwidth%
+      \hbox{\box\beamer@linebox\hfill}\hfill\hskip-\Gm@rmargin}
+  }
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+\title{细胞模型及参数匹配}
+\subtitle{组会}
+\institute[中科院力学研究所]{中科院力学研究所}
+\author{周吕文}
+\date{2013年8月30日}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame[plain]{
+\titlepage
+} % 产生主题页，plain选项表示不显示页眉页脚等内容
+\titlegraphic{\pgfuseimage{title}}
+\AtBeginSection[]{ % 在每个Section前都会加入的Frame
+  \frame<handout:0>{
+    \frametitle{Outline}
+    \tableofcontents[current,currentsubsection]
+  }
+}
+\frame{
+\tableofcontents
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{./sections/RBCmodel}
+\input{./sections/Dimensionless}
+\input{./sections/thankyou}
+
+\end{document}
